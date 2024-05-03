@@ -1,5 +1,26 @@
 function minDate(dates) {
-  //write you code here
+    let ans = dates[0];
+
+    for (let i = 1; i < dates.length; i++) {
+        let cur = dates[i];
+        let cur_y = cur.slice(0, 4);
+        let cur_m = parseInt(cur.slice(5, 7));
+        let cur_d = parseInt(cur.slice(8, 10));
+
+        let prev_y = ans.slice(0, 4);
+        let prev_m = parseInt(ans.slice(5, 7));
+        let prev_d = parseInt(ans.slice(8, 10));
+
+        if (cur_y < prev_y) {
+            ans = cur;
+        } else if (cur_y === prev_y && cur_m < prev_m) {
+            ans = cur;
+        } else if (cur_y === prev_y && cur_m === prev_m && cur_d < prev_d) {
+            ans = cur;
+        }
+    }
+
+    return ans;
 }
 
 // Do not change the code
